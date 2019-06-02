@@ -1,8 +1,9 @@
 # PWCN
 
-Repo for [SIGIR 2019](https://sigir.org/sigir2019/
-) paper titled "Syntax-Aware Aspect-Level Sentiment Classification with Proximity-Weighted Convolution Network"
-* Chen Zhang, Qiuchi Li and Dawei Song.
+**PWCN** - **P**roximity-**W**eighted **C**onvolution **N**etwork
+* Repo for [SIGIR 2019](https://sigir.org/sigir2019/
+) paper titled "Syntax-Aware Aspect-Level Sentiment Classification with Proximity-Weighted Convolution Network" 
+* Chen Zhang, [Qiuchi Li](https://qiuchili.github.io/) and Dawei Song.
 
 ## Requirements
 
@@ -15,12 +16,12 @@ Repo for [SIGIR 2019](https://sigir.org/sigir2019/
 
 * Download pretrained GloVe embeddings with this [link](http://nlp.stanford.edu/data/wordvecs/glove.840B.300d.zip) and extract `glove.840B.300d.txt` into `glove/`.
 * Train with command, optional arguments could be found in [train.py](/train.py)
-```python
+```bash
 python train.py --model_name pwcn_dep --dataset laptop
 ```
 * Infer with [infer.py](/infer.py)
 
-## Models
+## Model
 
 We propose a proximity-weighted convolution network to offer an aspect-specific syntax-aware representation of contexts. In particular, two ways of determining proximity weight are explored, namely position proximity and dependency proximity. The representation is primarily abstracted by a bidirectional LSTM architecture and further enhanced by a proximity-weighted convolution.
 
