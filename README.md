@@ -3,12 +3,12 @@
 **PWCN** - **P**roximity-**W**eighted **C**onvolution **N**etwork
 * Repo for [SIGIR 2019](https://sigir.org/sigir2019/
 ) paper titled "Syntax-Aware Aspect-Level Sentiment Classification with Proximity-Weighted Convolution Network" 
-* Chen Zhang, [Qiuchi Li](https://qiuchili.github.io/) and Dawei Song.
+* [Chen Zhang](https://genezc.github.io), [Qiuchi Li](https://qiuchili.github.io) and Dawei Song.
 
 ## Requirements
 
 * Python 3.6
-* Pytorch 1.0.0
+* PyTorch 1.0.0
 * SpaCy 2.0.18
 * numpy 1.15.4
 
@@ -34,10 +34,15 @@ An overview of our proposed model is given below
 If you use the code in your paper, please kindly star this repo and cite our paper
 
 ```bibtex
-To appear
+@inproceedings{Zhang:Syntax,
+  author={Chen Zhang, Qiuchi Li, Dawei Song},
+  title={Syntax-Aware Aspect-Level Sentiment Classification with Proximity-Weighted Convolution Network},
+  year={2019},
+  booktitle={SIGIR’19),}
+}
 ```
 
 ## Credits
 
 * Code of this repo heavily relies on [ABSA-PyTorch](https://github.com/songyouwei/ABSA-PyTorch), in which I am one of the contributors.
-* For any issues or suggestions about this work, don't hesitate to create a issue or contact [gene_zhangchen@163.com](mailto:gene_zhangchen@163.com) !
+* For any issues or suggestions about this work, don't hesitate to create an issue or directly contact me via [gene_zhangchen@163.com](mailto:gene_zhangchen@163.com) !
