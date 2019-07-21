@@ -34,11 +34,22 @@ An overview of our proposed model is given below
 If you use the code in your paper, please kindly star this repo and cite our paper
 
 ```bibtex
-@inproceedings{Zhang:Syntax,
-  author={Chen Zhang, Qiuchi Li, Dawei Song},
-  title={Syntax-Aware Aspect-Level Sentiment Classification with Proximity-Weighted Convolution Network},
-  year={2019},
-  booktitle={SIGIR’19),}
+@inproceedings{Zhang:2019:SAS:3331184.3331351,
+ author = {Zhang, Chen and Li, Qiuchi and Song, Dawei},
+ title = {Syntax-Aware Aspect-Level Sentiment Classification with Proximity-Weighted Convolution Network},
+ booktitle = {Proceedings of the 42Nd International ACM SIGIR Conference on Research and Development in Information Retrieval},
+ series = {SIGIR'19},
+ year = {2019},
+ isbn = {978-1-4503-6172-9},
+ location = {Paris, France},
+ pages = {1145--1148},
+ numpages = {4},
+ url = {http://doi.acm.org/10.1145/3331184.3331351},
+ doi = {10.1145/3331184.3331351},
+ acmid = {3331351},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {proximity-weighted convolution, sentiment classification, syntax-awareness},
 }
 ```
 
