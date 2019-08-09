@@ -3,6 +3,8 @@
 import os
 import math
 import argparse
+import random
+import numpy
 import torch
 import torch.nn as nn
 from bucket_iterator import BucketIterator
@@ -49,10 +51,12 @@ class Instructor:
         max_test_acc = 0
         max_f1 = 0
         global_step = 0
+        continue_not_increase = 0
         for epoch in range(self.opt.num_epoch):
             print('>' * 100)
             print('epoch: ', epoch)
             n_correct, n_total = 0, 0
+            increase_flag = False
             for i_batch, sample_batched in enumerate(self.train_data_loader):
                 global_step += 1
 
@@ -77,6 +81,7 @@ class Instructor:
                     if test_acc > max_test_acc:
                         max_test_acc = test_acc
                     if f1 > max_f1:
+                        increase_flag = True
                         max_f1 = f1
                         if self.opt.save and f1 > self.global_f1:
                             self.global_f1 = f1
@@ -85,7 +90,13 @@ class Instructor:
                             torch.save(self.model.state_dict(), 'state_dict/'+self.opt.model_name+'_'+self.opt.dataset+'.pkl')
                             print('>> best model saved.')
                     print('loss: {:.4f}, acc: {:.4f}, test_acc: {:.4f}, f1: {:.4f}'.format(loss.item(), train_acc, test_acc, f1))
-
+            if increase_flag == False:
+                continue_not_increase += 1
+                if continue_not_increase >= 5:
+                    print('early stop.')
+                    break
+            else:
+                continue_not_increase = 0                    
         return max_test_acc, max_f1
 
     def _evaluate_acc_f1(self):
@@ -113,7 +124,7 @@ class Instructor:
         f1 = metrics.f1_score(t_targets_all.cpu(), torch.argmax(t_outputs_all, -1).cpu(), labels=[0, 1, 2], average='macro')
         return test_acc, f1
 
-    def run(self, repeats=3):
+    def run(self, repeats=5):
         # Loss and Optimizer
         criterion = nn.CrossEntropyLoss()
         _params = filter(lambda p: p.requires_grad, self.model.parameters())
@@ -143,7 +154,7 @@ if __name__ == '__main__':
     parser.add_argument('--learning_rate', default=0.001, type=float)
     parser.add_argument('--dropout', default=0, type=float)
     parser.add_argument('--l2reg', default=0.00001, type=float)
-    parser.add_argument('--num_epoch', default=20, type=int)
+    parser.add_argument('--num_epoch', default=100, type=int)
     parser.add_argument('--batch_size', default=64, type=int)
     parser.add_argument('--log_step', default=5, type=int)
     parser.add_argument('--embed_dim', default=300, type=int)
@@ -190,8 +201,12 @@ if __name__ == '__main__':
         if opt.device is None else torch.device(opt.device)
 
     if opt.seed is not None:
+        random.seed(opt.seed)
+        numpy.random.seed(opt.seed)
         torch.manual_seed(opt.seed)
         torch.cuda.manual_seed(opt.seed)
+        torch.backends.cudnn.deterministic = True
+        torch.backends.cudnn.benchmark = False
 
     ins = Instructor(opt)
     ins.run()
