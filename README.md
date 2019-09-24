@@ -2,7 +2,7 @@
 
 **PWCN** - **P**roximity-**W**eighted **C**onvolution **N**etwork
 * Repo for [SIGIR 2019](https://sigir.org/sigir2019/
-) paper titled "[Syntax-Aware Aspect-Level Sentiment Classification with Proximity-Weighted Convolution Network](https://dl.acm.org/citation.cfm?id=3331351)" 
+) paper titled "[Syntax-Aware Aspect-Level Sentiment Classification with Proximity-Weighted Convolution Network](https://arxiv.org/abs/1909.10171)" 
 * [Chen Zhang](https://genezc.github.io), [Qiuchi Li](https://qiuchili.github.io) and Dawei Song.
 
 ## Requirements
