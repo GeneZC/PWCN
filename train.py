@@ -127,14 +127,14 @@ class Instructor:
     def run(self, repeats=5):
         # Loss and Optimizer
         criterion = nn.CrossEntropyLoss()
-        _params = filter(lambda p: p.requires_grad, self.model.parameters())
-        optimizer = self.opt.optimizer(_params, lr=self.opt.learning_rate, weight_decay=self.opt.l2reg)
 
         max_test_acc_avg = 0
         max_f1_avg = 0
         for i in range(repeats):
             print('repeat: ', i)
-            self._reset_params()
+            self._reset_params() 
+            _params = filter(lambda p: p.requires_grad, self.model.parameters())
+            optimizer = self.opt.optimizer(_params, lr=self.opt.learning_rate, weight_decay=self.opt.l2reg)
             max_test_acc, max_f1 = self._train(criterion, optimizer)
             print('max_test_acc: {0}     max_f1: {1}'.format(max_test_acc, max_f1))
             max_test_acc_avg += max_test_acc
