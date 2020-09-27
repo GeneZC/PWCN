@@ -181,7 +181,7 @@ if __name__ == '__main__':
     }
     initializers = {
         'xavier_uniform_': torch.nn.init.xavier_uniform_,
-        'xavier_normal_': torch.nn.init.xavier_normal,
+        'xavier_normal_': torch.nn.init.xavier_normal_,
         'orthogonal_': torch.nn.init.orthogonal_,
     }
     optimizers = {
