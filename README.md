@@ -29,6 +29,20 @@ An overview of our proposed model is given below
 
 ![model](/assets/sigir2019pwcn-fig1.png)
 
+## Docker Image
+
+There is a Docker Image created to run this model easily. You can pull the image here 
+
+```
+docker pull auliadil/pwcn
+```
+
+In order to run this docker image, just run 
+1. `docker run -d --name pwcn auliadil/pwcn`
+2. Go to docker image terminal with `docker exec -ti pwcn \bin\bash`
+3. Then, you can run the `python train.py --model_name pwcn_dep --dataset laptop` command
+
+
 ## Citation
 
 If you use the code in your paper, please kindly star this repo and cite our paper
