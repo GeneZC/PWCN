@@ -40,7 +40,8 @@ docker pull auliadil/pwcn
 In order to run this docker image, just run 
 1. `docker run -d --name pwcn auliadil/pwcn`
 2. Go to docker image terminal with `docker exec -ti pwcn \bin\bash`
-3. Then, you can run the `python train.py --model_name pwcn_dep --dataset laptop` command
+3. Run `conda activate myenv`
+4. Then, you can run the `python train.py --model_name pwcn_dep --dataset laptop` command
 
 
 ## Citation
